@@ -69,6 +69,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 // ---- Público: cualquiera puede entrar (invitados incluidos) ----
+                .requestMatchers(HttpMethod.GET, "/", "/health").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/login", "/api/clientes").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/categorias", "/api/producto").permitAll()
 
